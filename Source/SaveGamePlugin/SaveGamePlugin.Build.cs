@@ -26,6 +26,8 @@ public class SaveGamePlugin : ModuleRules
 			new string[]
 			{
 				"Core",
+                "Json",
+                "JsonUtilities",
 				// ... add other public dependencies that you statically link with here ...
 			}
 			);
