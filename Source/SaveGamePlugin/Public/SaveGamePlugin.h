@@ -12,4 +12,9 @@ public:
 	/** IModuleInterface implementation */
 	virtual void StartupModule() override;
 	virtual void ShutdownModule() override;
+
+#if WITH_EDITOR
+	void AddMenuEntry(FMenuBuilder& MenuBuilder);
+	void OnValidateSaveSystem();
+#endif
 };
