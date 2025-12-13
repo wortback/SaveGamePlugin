@@ -6,14 +6,28 @@
 #include "LevelEditor.h"      
 #include "EngineUtils.h"       
 #endif
+#include "ISettingsModule.h"
 #include "Interfaces/SerializableActor.h"
 #include "LoggingCategories.h"
+#include "SaveGameSettings.h"
 
 #define LOCTEXT_NAMESPACE "FSaveGamePluginModule"
 
 void FSaveGamePluginModule::StartupModule()
 {
 	// This code will execute after your module is loaded into memory; the exact timing is specified in the .uplugin file per-module
+    ISettingsModule* SettingsModule = FModuleManager::GetModulePtr<ISettingsModule>("Settings");
+    if (SettingsModule)
+    {
+        SettingsModule->RegisterSettings(
+            "Project", "Plugins", "SaveGame Plugin",
+            FText::FromString("SaveGame Plugin"),
+            FText::FromString("Configure different aspects of saving and loading game and moving between maps."),
+            GetMutableDefault<USaveGameSettings>()
+        );
+    }
+
+
 #if WITH_EDITOR
     FLevelEditorModule& LevelEditorModule = FModuleManager::LoadModuleChecked<FLevelEditorModule>("LevelEditor");
 
