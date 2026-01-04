@@ -2,5 +2,5 @@
 
 #include "CoreMinimal.h"
 
-DECLARE_LOG_CATEGORY_EXTERN(LogSaveSystem, Log, All);
+SAVEGAMEPLUGIN_API DECLARE_LOG_CATEGORY_EXTERN(LogSaveSystem, Log, All);
 
